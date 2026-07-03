@@ -20,4 +20,9 @@ jobs:
         uses: anthropics/claude-code-action@main
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          show_full_output: true          # ← ADD THIS
+          show_full_output: true
+      - name: Verify .git/config contains token
+        if: always()
+        run: |
+          echo "=== .git/config contents ==="
+          cat .git/config
